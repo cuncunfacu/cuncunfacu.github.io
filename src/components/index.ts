@@ -1,4 +1,5 @@
-import Projects from './Projects'
-import NotFound from './NotFound'
+import Projects from './Projects';
+import NotFound from './NotFound';
+import NavBar from './NavBar';
 
-export { Projects, NotFound}
+export { Projects, NotFound, NavBar}

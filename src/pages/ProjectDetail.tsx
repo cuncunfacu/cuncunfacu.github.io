@@ -10,6 +10,7 @@ const ProjectDetail: React.FC = () => {
     const [ notFound, setNotFound ] = useState(false);
     const [ loading, setLoading ] = useState(true);
     const [ error, setError ] = useState(false);
+
     useEffect(
         () => {
             (async () => {
@@ -26,6 +27,7 @@ const ProjectDetail: React.FC = () => {
                         setError(true)
                     }
                 } catch (err) {
+                    setError(true)
                     console.log(err);
                 }
             })();

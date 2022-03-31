@@ -1,23 +1,13 @@
 import React, {useState, useEffect} from 'react';
 
-import {db} from '../firebase-config';
-import { collection, getDocs, query, where, documentId } from "firebase/firestore";
 
-import { HomeData } from '../interfaces'
 import { Projects } from '../components';
+import { HomeData } from '../interfaces';
 
-const Home: React.FC<any> = (props: null) => {
-
-    const [homeData, setHomeData] = useState<HomeData | undefined>(undefined)
-    
-    useEffect(
-        () => {
-            (async () => {
-                const homeData = await fetchHomeData(); //todo: try catch
-                setHomeData(homeData);
-            })();
-        }
-        , []);
+interface HomeProps {
+    homeData: HomeData
+}
+const Home: React.FC<HomeProps> = ({ homeData }) => {    
     if (homeData) {
         return (
             <div>
@@ -28,17 +18,9 @@ const Home: React.FC<any> = (props: null) => {
             </div>
         )
     } else {
-        return(<p>Loading...</p>)
+        return(<p>An error ocurred...</p>)
     }
 }
 
-
-// ---- HELPERS ----
-const fetchHomeData = async (): Promise<HomeData> => {
-    const q = query(collection(db, "home"), where(documentId(), "==", "home1" ));
-    const querySnapshot = await getDocs(q);
-    const homeMetadata = querySnapshot.docs[0].data() as HomeData
-    return (homeMetadata)
-}
 
 export default Home;

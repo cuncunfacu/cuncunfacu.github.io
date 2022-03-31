@@ -8,8 +8,17 @@ interface Project {
 interface HomeData {
     title: string,
     description: string,
-    aboutMeDesc: string,
     projects: Project[]
 }
 
-export {type HomeData, type Project}
+interface AboutMeData {
+    title: string,
+    bio: string
+}
+
+interface SiteData {
+    homeData: HomeData
+    aboutMeData: AboutMeData
+}
+
+export {type HomeData, type Project, type SiteData}

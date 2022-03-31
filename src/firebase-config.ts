@@ -10,14 +10,6 @@ import {
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-const firebaseConfig2 = {
-    apiKey: "AIzaSyC87Nmkl8V7dYyMOSrq7Zeq8Sp2ludUZso",
-    authDomain: "portfolio22-38a55.firebaseapp.com",
-    projectId: "portfolio22-38a55",
-    storageBucket: "portfolio22-38a55.appspot.com",
-    messagingSenderId: "1094762024485",
-    appId: "1:1094762024485:web:0b39ef8d6e5de93d4139cc"
-};
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
     authDomain: process.env.REACT_APP_FIREBASE_AUTHDOMAIN,
