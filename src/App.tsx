@@ -7,20 +7,16 @@ import {
 
 import './App.css';
 import {
-  Proyects,
-  Proyect
-} from './components';
+  Home,
+  ProjectDetail
+} from './pages';
 
 function App() {
   return (
     <>
-      <h1>Facundo B.</h1>
-      <p>
-        Industrial engineer, musician foo bar
-      </p>
       <Routes>
-        <Route path="/" element={<Proyects />} />
-        <Route path="/p1" element={<Proyect />} />
+        <Route path="/" element={<Home/>} />
+        <Route path="/project/:projectId" element={<ProjectDetail/>} />
       </Routes>
     </>
   );

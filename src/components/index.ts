@@ -1,4 +1,4 @@
-import Proyects from './Proyects';
-import Proyect from './Proyect';
+import Projects from './Projects'
+import NotFound from './NotFound'
 
-export { Proyect, Proyects}
+export { Projects, NotFound}
