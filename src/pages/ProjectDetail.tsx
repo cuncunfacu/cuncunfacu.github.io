@@ -3,8 +3,12 @@ import { useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown'
 
 import { NotFound } from '../components';
+import { Language } from '../interfaces';
 
-const ProjectDetail: React.FC = () => {
+interface projectDetailProps {
+    selectedLanguage: Language
+}
+const ProjectDetail: React.FC<projectDetailProps> = ( { selectedLanguage} ) => {
     const { projectId } = useParams<{projectId: string}>();
     const [ projectReadmeContent, setProjectReadmeContent ] = useState<string | undefined>(undefined);
     const [ notFound, setNotFound ] = useState(false);
@@ -38,12 +42,20 @@ const ProjectDetail: React.FC = () => {
     }
     if (projectReadmeContent) {
         return (
-            <ReactMarkdown>
-                { projectReadmeContent }
-            </ReactMarkdown>
+            <div className="col">
+                <div className="row">
+                    <a href={'https://github.com/cuncunfacu/' + projectId} target="_blank">{
+                        selectedLanguage == Language.Spanish ? "Visitar el código" : "View Code"}</a>
+                </div>
+                <div className="row">
+                    <ReactMarkdown>
+                        {projectReadmeContent}
+                    </ReactMarkdown>
+                </div>
+            </div>
         )
     }
-    if ( loading ) {
+    if (loading) {
         return (<span>Loading...</span>)
     }
     if ( error ) {

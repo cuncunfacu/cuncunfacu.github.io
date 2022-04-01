@@ -21,4 +21,9 @@ interface SiteData {
     aboutMeData: AboutMeData
 }
 
-export {type HomeData, type Project, type SiteData}
+enum Language {
+    Spanish = "Esp",
+    English = "Eng"
+    }
+
+export {type HomeData, type Project, type SiteData, type AboutMeData, Language}

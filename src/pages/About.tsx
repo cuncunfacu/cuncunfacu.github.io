@@ -1,10 +1,14 @@
 import React, {useState, useEffect} from 'react';
+import { AboutMeData } from '../interfaces'
 
-const About: React.FC = () => {
+interface AboutProps {
+    aboutMeData: AboutMeData
+}
+const About: React.FC<AboutProps> = ({ aboutMeData }) => {
     return(
         <div>
-            <h1>Juan</h1>
-            <p>Estudiante de administracion en busca de nuevos desafios y aprendizajes. Experiencia en todo</p>
+            <h1>{ aboutMeData.title }</h1>
+            <p>{ aboutMeData.bio }</p>
         </div>
     )
 }

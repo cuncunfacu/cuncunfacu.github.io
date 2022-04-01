@@ -15,47 +15,43 @@ import {
   ProjectDetail
 } from './pages';
 
-import { SiteData } from './interfaces'
+import { SiteData, Language } from './interfaces'
 
 import { NavBar } from './components';
 
-enum Language {
-  Spanish = "Esp",
-  English = "Eng"
-}
 
 function App() {
   const [siteData, setSiteData] = useState<SiteData | undefined>(undefined)
-  const [language, setLanguage] = useState<Language>(Language.English);
+  const [selectedLanguage, setSelectedLanguage] = useState<Language>(Language.English);
   const [isLoading, setIsLoading] = useState(true)
 
-  const switchLanguage = () => {
+  const switchLanguage = (newLanguage: Language) => {
     setIsLoading(true)
-    setLanguage(Language.Spanish)
+    setSelectedLanguage(newLanguage)
   }
 
   useEffect(
     () => {
       (async () => {
-        const siteData = await fetchSiteData(language); //todo: try catch
+        const siteData = await fetchSiteData(selectedLanguage); //todo: try catch
         setSiteData(siteData);
         setIsLoading(false)
       })();
     }
-    , [language]);
+    , [selectedLanguage]);
 
   
   if (isLoading) {
     return (<span>Loading</span>)
-  } else if (siteData && siteData.homeData) {
+  } else if (siteData) {
     return (
       <div>
-        <NavBar switchLanguage={switchLanguage}/>
+        <NavBar selectedLanguage={selectedLanguage} switchLanguage={switchLanguage}/>
         <div className="container container-fluid">
           <Routes>
-            <Route path="/" element={<Home homeData={siteData.homeData} />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/project/:projectId" element={<ProjectDetail />} />
+            <Route path="/" element={<Home homeData={siteData.homeData}/>} />
+            <Route path="/about" element={<About aboutMeData={ siteData.aboutMeData}/>} />
+            <Route path="/project/:projectId" element={<ProjectDetail selectedLanguage={selectedLanguage}/>} />
           </Routes>
         </div>
       </div>
@@ -67,8 +63,8 @@ function App() {
 }
 
 // ---- HELPERS ----
-const fetchSiteData = async (language: Language): Promise<SiteData> => {
-  const q = query(collection(db, "siteData"), where(documentId(), "==", `siteData${language}`));
+const fetchSiteData = async (selectedLanguage: Language): Promise<SiteData> => {
+  const q = query(collection(db, "siteData"), where(documentId(), "==", `siteData${selectedLanguage}`));
   const querySnapshot = await getDocs(q);
   const homeMetadata = querySnapshot.docs[0].data() as SiteData
   return (homeMetadata)
