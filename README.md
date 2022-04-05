@@ -5,13 +5,13 @@ This is the source code of my [GitHub Pages](https://cuncunfacu.github.io)
 
 ## Website Content
 ### Home Page Section
-This page introduces some of my github projects. You can switch languages between English and Spanish. The site's content is stored in firestore.
+This page introduces some of my GitHub projects. You can switch languages between English and Spanish. The site's content is stored in Firestore.
 
 ### Project Detail Section
 This page renders the Markup, from the `README.md` file of the repository, and gives it a personalized style. 
 
 ## Deployment and Environments
-This repo is integrated with two environents.
+This repo is integrated with two environments.
 
 ### Staging environment
 The hosting of the staging environment is handled by Netlify. When a Commit is pushed to the branch: `staging`, an automatic build and deployment is triggered.
