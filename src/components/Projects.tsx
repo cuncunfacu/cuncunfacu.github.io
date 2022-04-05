@@ -6,13 +6,13 @@ interface  ProjectsProps {
     projects: Project[]
 }
 const Projects: React.FC<ProjectsProps> = ({ projects }): React.ReactElement => {
-    return (<div className="container">
+    return (<div className="container-fluid mt-4">
         <div className="row">
             {projects.map(project => {
                 return (
-                    <div className="col-lg-6">
+                    <div className="col-lg-6 d-flex align-items-stretch">
                         <Link to={`project/${project.id}`} className="card mb-4">
-                            <img className="card-img-top" src="https://via.placeholder.com/1000x200" alt="Card image cap" />
+                            <img className="card-img-top" src={project.thumbnail} alt="Card image cap" />
                             <div className="card-body">
                                 <h5 className="card-title">{project.name}</h5>
                                 <p className="card-text">{project.description}</p>

@@ -2,7 +2,7 @@ interface Project {
     id: string
     name: string,
     description: string,
-    readmeUrl: string
+    thumbnail: string
 }
 
 interface HomeData {

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 
 import { db } from './firebase-config';
 import { collection, getDocs, query, where, documentId } from "firebase/firestore";
-
 import {
   Routes,
   Route,
@@ -17,7 +16,7 @@ import {
 
 import { SiteData, Language } from './interfaces'
 
-import { NavBar } from './components';
+import { NavBar, Loading } from './components';
 
 
 function App() {
@@ -41,21 +40,23 @@ function App() {
     , [selectedLanguage]);
 
   
-  if (isLoading) {
-    return (<span>Loading</span>)
-  } else if (siteData) {
+if (siteData) {
     return (
       <div>
-        <NavBar selectedLanguage={selectedLanguage} switchLanguage={switchLanguage}/>
-        <div className="container container-fluid">
-          <Routes>
-            <Route path="/" element={<Home homeData={siteData.homeData}/>} />
-            <Route path="/about" element={<About aboutMeData={ siteData.aboutMeData}/>} />
-            <Route path="/project/:projectId" element={<ProjectDetail selectedLanguage={selectedLanguage}/>} />
-          </Routes>
-        </div>
+        <NavBar selectedLanguage={selectedLanguage} switchLanguage={switchLanguage} />
+        {isLoading ? <Loading /> :
+          <div className="container container-fluid">
+            <Routes>
+              <Route path="/" element={<Home homeData={siteData.homeData} />} />
+              <Route path="/about" element={<About aboutMeData={siteData.aboutMeData} />} />
+              <Route path="/project/:projectId" element={<ProjectDetail selectedLanguage={selectedLanguage} />} />
+            </Routes>
+          </div>
+        }
       </div>
     )
+  } else if (isLoading) {
+    return(<Loading/>)
   } else {
     return (<span>Error</span>)
   }

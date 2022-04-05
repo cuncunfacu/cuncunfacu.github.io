@@ -10,10 +10,9 @@ interface HomeProps {
 const Home: React.FC<HomeProps> = ({ homeData }) => {    
     if (homeData) {
         return (
-            <div>
+            <div className='mt-4'>
                 <h1>{homeData.title}</h1>
-                <p>{homeData.description}</p>
-                <h2>Github Personal projects...</h2>
+                <p className="mb-4">{homeData.description}</p>
                 <Projects projects={homeData.projects}/>
             </div>
         )
