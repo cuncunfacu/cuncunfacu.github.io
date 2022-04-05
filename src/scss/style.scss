@@ -1,6 +1,15 @@
+.sep-line {
+    height: 1px;
+    width: 50vw;
+    background-color: gray;
+}
+
 a.card {
     color: inherit;
     text-decoration: none;
+}
+.presentation-head{
+    min-height: 70vh;
 }
 
 .mkdown {

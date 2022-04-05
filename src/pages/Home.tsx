@@ -1,5 +1,4 @@
-import React, {useState, useEffect} from 'react';
-
+import React, {useRef} from 'react';
 import codeImg from '../assets/images/codeImg.svg'
 import downAngle from '../assets/images/down-angle.svg'
 import { Projects } from '../components';
@@ -13,7 +12,7 @@ const Home: React.FC<HomeProps> = ({ homeData }) => {
         return (
             <div className='container container-fluid mt-4'>
                 <div className='col'>
-                    <div className='row align-items-lg-center p-4 mb-4'>
+                    <div className='row d-flex align-items-center presentation-head p-4 mb-4'>
                         <div className='col-md-8 order-md-1 col-lg-7 text-center text-md-start'>
                             <h1>{homeData.title}</h1>
                             <p className="mb-4">{homeData.description}</p>
@@ -22,9 +21,11 @@ const Home: React.FC<HomeProps> = ({ homeData }) => {
                             <img src={codeImg} alt="presentation image" />
                         </div>
                     </div>
-                    <div className='row mt-4 d-flex align-items-center'>
+                    <div className="row d-flex align-items-center">
+                        <div className="sep-line"></div>
+                    </div>
+                    <div className='row mt-4 projects mb-3'>
                         <h2 className="text-center">Projects</h2>
-                        <img src={downAngle} alt="down" style={{ height: "3rem"}}/>
                         <Projects projects={homeData.projects} />
                     </div>
                 </div>
