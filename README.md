@@ -17,7 +17,7 @@ This repo is integrated with two environments.
 The hosting of the staging environment is handled by Netlify. When a Commit is pushed to the branch: `staging`, an automatic build and deployment is triggered.
 
 ### Production environment
-The hosting of the staging environment is handled by Github Pages. [Github Pages CLI](https://www.npmjs.com/package/gh-pages-cli) is used to deploy the build. The source of the production build is pushed to the branch: `gh-pages`
+The hosting of the production environment is handled by Github Pages. [Github Pages CLI](https://www.npmjs.com/package/gh-pages-cli) is used to deploy the build. The source of the production build is pushed to the branch: `gh-pages`
 
 
 ## Stacks used
