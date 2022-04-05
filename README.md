@@ -8,7 +8,7 @@ This is the source code of my [GitHub Pages](https://cuncunfacu.github.io)
 This page introduces some of my GitHub projects. You can switch languages between English and Spanish. The site's content is stored in Firestore.
 
 ### Project Detail Section
-This page renders the Markup, from the `README.md` file of the repository, and gives it a personalized style. 
+This page renders the MardDown, from the `README.md` file of the repository, and gives it a personalized style. 
 
 ## Deployment and Environments
 This repo is integrated with two environments.
