@@ -47,7 +47,7 @@ const ProjectDetail: React.FC<projectDetailProps> = ( { selectedLanguage} ) => {
             <div className="col">
                 <div className="row p-4 d-flex justify-content-center">
                     <div className="col-lg-2 d-flex">
-                        <a className="btn btn-secondary" href={'https://github.com/cuncunfacu/' + projectId} role="button" target="_blank">
+                        <a className="btn btn-secondary" href={'https://github.com/cuncunfacu/' + projectId} role="button" target="_blank" rel="noreferrer">
                             <span>{selectedLanguage == Language.Spanish ? "Visitar código  " : "View Code  "}</span>
                             <img src={gitHub} alt='GitHub Logo' style={{ height: '1.5rem' }} />
                         </a>
