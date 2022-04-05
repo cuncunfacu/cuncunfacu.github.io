@@ -3,4 +3,11 @@ a.card {
     text-decoration: none;
 }
 
+.mkdown {
+    img {
+        width: 60%;
+        height: auto
+    }
+}
+
 @import "../../node_modules/bootstrap/scss/bootstrap";

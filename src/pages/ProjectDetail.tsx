@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown'
 
-import { NotFound } from '../components';
+import { NotFound, Loading } from '../components';
 import { Language } from '../interfaces';
 
 interface projectDetailProps {
@@ -47,7 +47,7 @@ const ProjectDetail: React.FC<projectDetailProps> = ( { selectedLanguage} ) => {
                     <a href={'https://github.com/cuncunfacu/' + projectId} target="_blank">{
                         selectedLanguage == Language.Spanish ? "Visitar el código" : "View Code"}</a>
                 </div>
-                <div className="row">
+                <div className="row mkdown">
                     <ReactMarkdown>
                         {projectReadmeContent}
                     </ReactMarkdown>
@@ -56,7 +56,7 @@ const ProjectDetail: React.FC<projectDetailProps> = ( { selectedLanguage} ) => {
         )
     }
     if (loading) {
-        return (<span>Loading...</span>)
+        return (<Loading />)
     }
     if ( error ) {
         return (<span>An error occured... Please try again later</span>)
