@@ -21,8 +21,7 @@ The hosting of the staging environment is handled by Github Pages. [Github Pages
 
 
 ## Stacks used
-+ React
-+ TypeScript
-+ Firebase
++ React & Typescript
 + Netlify (For hosting staging environment)
 + Github Pages (For hosting production environment)
++ Firebase
