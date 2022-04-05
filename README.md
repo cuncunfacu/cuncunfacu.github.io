@@ -1,4 +1,4 @@
-# My GiHub portfolio
+# My GiHub Portfolio
 
 A fun way to show my repositories and display information about me.
 This is the source code of my [GitHub Pages](https://cuncunfacu.github.io)
