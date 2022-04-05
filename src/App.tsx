@@ -1,22 +1,16 @@
 import React, { useState, useEffect } from 'react';
-
 import { db } from './firebase-config';
 import { collection, getDocs, query, where, documentId } from "firebase/firestore";
-import {
-  Routes,
-  Route,
-} from "react-router-dom";
-
+import { Routes, Route} from "react-router-dom";
 import './css/style.min.css';
+import { SiteData, Language } from './interfaces'
+import { NavBar, Loading } from './components';
 import {
   Home,
   About,
   ProjectDetail
 } from './pages';
 
-import { SiteData, Language } from './interfaces'
-
-import { NavBar, Loading } from './components';
 
 
 function App() {
