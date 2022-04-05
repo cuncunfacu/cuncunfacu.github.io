@@ -1,17 +1,28 @@
 # My GiHub portfolio
 
 A fun way to show my repositories and display information about me.
+This is the source code of my [GitHub Pages](https://cuncunfacu.github.io)
+
+## Website Content
+### Home Page Section
+This page introduces some of my github projects. You can switch languages between English and Spanish. The site's content is stored in firestore.
+
+### Project Detail Section
+This page renders the Markup, from the `README.md` file of the repository, and gives it a personalized style. 
+
+## Deployment and Environments
+This repo is integrated whith two environents.
+
+### Staging
+The hosting of the staging environment is handled by Netlify. When a Commit is pushed to the branch: `staging`, an automatic build and deployment is triggered.
+
+### Production
+The hosting of the staging environment is handled by Github Pages. [Github Pages CLI](https://www.npmjs.com/package/gh-pages-cli) is used to deploy the build. The source of the production build is pushed to the branch: `gh-pages`
+
 
 ## Stacks used
 + React
 + TypeScript
 + Firebase
 + Netlify (For hosting staging environment)
-+ Github Pages (For hosting production Build)
-
-## Content
-
-### Home Page
-This page introduces some of my github projects
-### Project Detail
-This page renders the `README.md` file from GitHub. And gives a personalized styling.
++ Github Pages (For hosting production environment)
