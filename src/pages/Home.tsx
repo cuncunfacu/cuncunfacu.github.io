@@ -1,6 +1,5 @@
 import React, {useRef} from 'react';
 import codeImg from '../assets/images/codeImg.svg'
-import downAngle from '../assets/images/down-angle.svg'
 import { Projects } from '../components';
 import { HomeData } from '../interfaces';
 
