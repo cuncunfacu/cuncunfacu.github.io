@@ -1,22 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { db } from './firebase-config';
 import { collection, getDocs, query, where, documentId } from "firebase/firestore";
 import { Routes, Route} from "react-router-dom";
-import './css/style.min.css';
 import { SiteData, Language } from './interfaces'
-import { NavBar, Loading } from './components';
+import { NavBar, Loading, Footer } from './components';
 import {
   Home,
   About,
   ProjectDetail
 } from './pages';
-
+import './css/style.min.css';
 
 
 function App() {
   const [siteData, setSiteData] = useState<SiteData | undefined>(undefined)
   const [selectedLanguage, setSelectedLanguage] = useState<Language>(Language.English);
   const [isLoading, setIsLoading] = useState(true)
+  const [ error, setError ] = useState(false)
 
   const switchLanguage = (newLanguage: Language) => {
     setIsLoading(true)
@@ -26,17 +26,21 @@ function App() {
   useEffect(
     () => {
       (async () => {
-        const siteData = await fetchSiteData(selectedLanguage); //todo: try catch
-        setSiteData(siteData);
-        setIsLoading(false)
+        try {
+          const siteData = await fetchSiteData(selectedLanguage); //todo: try catch
+          setSiteData(siteData);
+          setIsLoading(false)
+        } catch {
+          setError(true)
+        }
       })();
     }
     , [selectedLanguage]);
 
-  
-if (siteData) {
+
+  if (siteData) {
     return (
-      <div>
+      <div className="d-flex flex-column min-vh-100">
         <NavBar selectedLanguage={selectedLanguage} switchLanguage={switchLanguage} />
         {isLoading ? <Loading /> :
           <div className="container container-fluid">
@@ -47,12 +51,15 @@ if (siteData) {
             </Routes>
           </div>
         }
+        <Footer selectedLanguage={selectedLanguage}/>
       </div>
     )
   } else if (isLoading) {
-    return(<Loading/>)
+    return (<Loading />)
+  } else if (error) {
+    return (<span>An error occured. Please try again later</span>)
   } else {
-    return (<span>Error</span>)
+    return (<span>An error occured. Please try again later</span>)
   }
   ;
 }

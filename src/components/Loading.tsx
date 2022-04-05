@@ -5,8 +5,11 @@ const Loading: React.FC = () => {
         <div
             style={{
                 position: "absolute",
-                top: 0, height: "100vh",
-                width: "100vw", display: "flex",
+                top: 0,
+                left: 0,
+                height: "100vh",
+                width: "100vw",
+                display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 zIndex:100,

@@ -1,6 +1,15 @@
+.sep-line {
+    height: 1px;
+    width: 50vw;
+    background-color: gray;
+}
+
 a.card {
     color: inherit;
     text-decoration: none;
+}
+.presentation-head{
+    min-height: 70vh;
 }
 
 .mkdown {
@@ -15,5 +24,26 @@ a.card {
             max-width: 50%;
         }
     }
-}
+    h1 {
+        text-align: center;
+    }
+    h1::after {
+        content : "";
+        display: block;
+        height  : 1px;
+        width   : 100%; 
+        border-bottom:1px solid gray;
+        }
+    h2::after{
+        content : "";
+        display: block;
+        height  : 1px;
+        width   : 100%; 
+        border-bottom:1px solid lightgray;
+        }
+    }
+    ul {
+        margin-left: 5%;
+    }
+
 @import "../../node_modules/bootstrap/scss/bootstrap";

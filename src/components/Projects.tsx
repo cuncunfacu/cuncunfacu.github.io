@@ -6,7 +6,7 @@ interface  ProjectsProps {
     projects: Project[]
 }
 const Projects: React.FC<ProjectsProps> = ({ projects }): React.ReactElement => {
-    return (<div className="container-fluid mt-4" style={{marginBottom: "50vh"}}>
+    return (<div className="container-fluid mt-4">
         <div className="row">
             {projects.map(project => {
                 return (
