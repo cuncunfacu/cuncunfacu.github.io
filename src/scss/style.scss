@@ -4,14 +4,16 @@ a.card {
 }
 
 .mkdown {
+    margin-bottom: 50vh;
     img {
-        width: 60%;
-        height: auto
+        @extend .img-fluid;
+        height: auto;
+        @media (max-width: 576px) {
+            max-width: 40vw;
+        }
+        @media (min-width: 992px) {
+            max-width: 50%;
+        }
     }
 }
-
-.home-heading {
-    height: 60vh
-}
-
 @import "../../node_modules/bootstrap/scss/bootstrap";

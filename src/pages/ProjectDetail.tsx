@@ -5,6 +5,8 @@ import ReactMarkdown from 'react-markdown'
 import { NotFound, Loading } from '../components';
 import { Language } from '../interfaces';
 
+import gitHub from '../assets/images/github.svg';
+
 interface projectDetailProps {
     selectedLanguage: Language
 }
@@ -43,9 +45,13 @@ const ProjectDetail: React.FC<projectDetailProps> = ( { selectedLanguage} ) => {
     if (projectReadmeContent) {
         return (
             <div className="col">
-                <div className="row">
-                    <a href={'https://github.com/cuncunfacu/' + projectId} target="_blank">{
-                        selectedLanguage == Language.Spanish ? "Visitar el código" : "View Code"}</a>
+                <div className="row p-4 d-flex justify-content-center">
+                    <div className="col-lg-2">
+                        <a className="btn btn-secondary" href={'https://github.com/cuncunfacu/' + projectId} role="button" target="_blank">
+                        <span>{selectedLanguage == Language.Spanish ? "Visitar código  " : "View Code  "}</span>
+                        <img src={gitHub} alt='GitHub Logo' style={{height: '1.5rem'}}/>
+                        </a>
+                    </div>
                 </div>
                 <div className="row mkdown">
                     <ReactMarkdown>
