@@ -6,7 +6,7 @@ interface AboutProps {
 }
 const About: React.FC<AboutProps> = ({ aboutMeData }) => {
     return (
-        <div className='container container-fluid mt-4'>
+        <div className='container container-fluid mt-4 mb-2'>
             <div className='row d-flex justify-content-center align-items-center'>
                 <div className='col-md-3'>
                     <h1>{aboutMeData.title}</h1>
