@@ -26,6 +26,15 @@ a.card {
     }
     h1 {
         text-align: center;
+        margin-bottom: 3rem;
+    }
+    h2{
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    h3 {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
     }
     h1::after {
         content : "";

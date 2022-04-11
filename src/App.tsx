@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { db } from './firebase-config';
-import { collection, getDocs, query, where, documentId } from "firebase/firestore";
-import { Routes, Route} from "react-router-dom";
-import { SiteData, Language } from './interfaces'
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchSiteData } from './app/siteDataSlice';
+import { RootState } from './app/store';
+
+import { Routes, Route } from "react-router-dom";
 import { NavBar, Loading, Footer } from './components';
 import {
   Home,
@@ -13,63 +14,40 @@ import './css/style.min.css';
 
 
 function App() {
-  const [siteData, setSiteData] = useState<SiteData | undefined>(undefined)
-  const [selectedLanguage, setSelectedLanguage] = useState<Language>(Language.English);
-  const [isLoading, setIsLoading] = useState(true)
-  const [ error, setError ] = useState(false)
 
-  const switchLanguage = (newLanguage: Language) => {
-    setIsLoading(true)
-    setSelectedLanguage(newLanguage)
-  }
+  const dispatch = useDispatch()
+  const status = useSelector((state: RootState) => state.siteData.status)
 
   useEffect(
     () => {
-      (async () => {
-        try {
-          const siteData = await fetchSiteData(selectedLanguage); //todo: try catch
-          setSiteData(siteData);
-          setIsLoading(false)
-        } catch {
-          setError(true)
-        }
-      })();
+      if (status === 'idle') {
+        dispatch(fetchSiteData())
+      }
     }
-    , [selectedLanguage]);
+    , [status, dispatch]);
 
 
-  if (siteData) {
+  if (status === 'succeeded') {
     return (
       <div className="d-flex flex-column min-vh-100">
-        <NavBar selectedLanguage={selectedLanguage} switchLanguage={switchLanguage} />
-        {isLoading ? <Loading /> :
-          <div className="container container-fluid">
-            <Routes>
-              <Route path="/" element={<Home homeData={siteData.homeData} />} />
-              <Route path="/about" element={<About aboutMeData={siteData.aboutMeData} />} />
-              <Route path="/project/:projectId" element={<ProjectDetail selectedLanguage={selectedLanguage} />} />
-            </Routes>
-          </div>
-        }
-        <Footer selectedLanguage={selectedLanguage}/>
+        <NavBar />
+        <div className="container container-fluid">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/project/:projectId" element={<ProjectDetail />} />
+          </Routes>
+        </div>
+        <Footer />
       </div>
     )
-  } else if (isLoading) {
+  } else if (status == "loading") {
     return (<Loading />)
-  } else if (error) {
-    return (<span>An error occured. Please try again later</span>)
   } else {
     return (<span>An error occured. Please try again later</span>)
   }
   ;
 }
 
-// ---- HELPERS ----
-const fetchSiteData = async (selectedLanguage: Language): Promise<SiteData> => {
-  const q = query(collection(db, "siteData"), where(documentId(), "==", `siteData${selectedLanguage}`));
-  const querySnapshot = await getDocs(q);
-  const homeMetadata = querySnapshot.docs[0].data() as SiteData
-  return (homeMetadata)
-}
 
 export default App;
