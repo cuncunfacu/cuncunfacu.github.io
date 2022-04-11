@@ -22,6 +22,7 @@ The hosting of the production environment is handled by Github Pages. [Github Pa
 
 ## Stacks used
 + React & Typescript
++ Redux
 + Netlify (For hosting staging environment)
 + Github Pages (For hosting production environment)
 + Firebase
