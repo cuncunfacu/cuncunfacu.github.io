@@ -1,9 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../app/store';
 import { Language } from '../interfaces';
-interface FooterProps {
-    selectedLanguage: Language;
-}
-const Footer: React.FC<FooterProps> = ({ selectedLanguage }) => {
+
+const Footer: React.FC = () => {
+    const selectedLanguage = useSelector((state: RootState) => state.siteData.selectedLanguage)
     return (
         <footer className=" mt-auto text-center text-lg-start bg-light text-muted">
             <div className="text-center p-4" style={{ backgroundColor: "rgba(0, 0, 0, 0.05)" }}>

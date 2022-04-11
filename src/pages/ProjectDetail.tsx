@@ -2,19 +2,20 @@ import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import { NotFound, Loading } from '../components';
+import { useSelector } from 'react-redux';
+import { RootState } from '../app/store';
 import { Language } from '../interfaces';
 
 import gitHub from '../assets/images/github.svg';
 
-interface projectDetailProps {
-    selectedLanguage: Language
-}
-const ProjectDetail: React.FC<projectDetailProps> = ( { selectedLanguage} ) => {
+const ProjectDetail: React.FC = ( ) => {
     const { projectId } = useParams<{projectId: string}>();
     const [ projectReadmeContent, setProjectReadmeContent ] = useState<string | undefined>(undefined);
     const [ notFound, setNotFound ] = useState(false);
     const [ loading, setLoading ] = useState(true);
     const [ error, setError ] = useState(false);
+
+    const selectedLanguage = useSelector((state: RootState) => state.siteData.selectedLanguage)
 
     useEffect(
         () => {
