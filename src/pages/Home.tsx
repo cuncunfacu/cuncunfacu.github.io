@@ -1,12 +1,13 @@
 import React, {useRef} from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../app/store';
 import codeImg from '../assets/images/codeImg.svg'
 import { Projects } from '../components';
-import { HomeData } from '../interfaces';
 
-interface HomeProps {
-    homeData: HomeData
-}
-const Home: React.FC<HomeProps> = ({ homeData }) => {
+const Home: React.FC = () => {
+    
+    const homeData = useSelector((state: RootState) => state.siteData.homeData)
+
     if (homeData) {
         return (
             <div className='container container-fluid mt-4'>
@@ -31,7 +32,7 @@ const Home: React.FC<HomeProps> = ({ homeData }) => {
             </div>
         )
     } else {
-        return (<p>An error ocurred...</p>)
+        return (<p>Error...</p>)
     }
 }
 
