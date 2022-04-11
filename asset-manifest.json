@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.dd3e8369.css",
-    "main.js": "/static/js/main.5d1e8077.js",
+    "main.js": "/static/js/main.dc2148b1.js",
     "static/media/codeImg.svg": "/static/media/codeImg.c5a0a79884fc0d5b65bcf15b4703277e.svg",
     "static/media/github.svg": "/static/media/github.833b63e28cadf07403bc81451d30b858.svg",
     "static/media/user-2935373.svg": "/static/media/user-2935373.2ab03db3ab6cb5c536d91656d8a879f5.svg",
@@ -9,6 +9,6 @@
   },
   "entrypoints": [
     "static/css/main.dd3e8369.css",
-    "static/js/main.5d1e8077.js"
+    "static/js/main.dc2148b1.js"
   ]
 }
